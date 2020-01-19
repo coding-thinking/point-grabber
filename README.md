@@ -26,19 +26,6 @@
 ./gradlew clean build docker
 ```
 
-* build image and push to `snapshot`
-
-```
-./gradlew clean build -PimageRepo=snapshot dockerPush
-```
-
-
-* build image and push to `stage`
-
-```
-./gradlew clean build -PimageRepo=stage dockerPush
-```
-
 ### Endpoint
 
 * for local
