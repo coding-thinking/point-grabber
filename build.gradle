@@ -1,0 +1,72 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.8.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
+	id 'eclipse-wtp'
+	id 'com.palantir.docker' version '0.21.0'
+}
+def G_VERSION = (project.hasProperty("version") &&  project.getProperty("version")!="unspecified") ? project.getProperty("version") : "latest"
+println G_VERSION
+group = 'com.sss.point.grabber'
+version = G_VERSION
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+ext {
+	set('springCloudVersion', "Greenwich.RELEASE")
+}
+
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-rest'
+	//implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.apache.httpcomponents:httpclient'
+
+	
+
+
+	implementation 'javax.validation:validation-api'
+		
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	
+	implementation 'io.springfox:springfox-swagger2:2.7.0'
+	implementation 'io.springfox:springfox-swagger-ui:2.7.0'
+	
+    implementation 'log4j:log4j:1.2.17'
+	
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
+
+/*
+def imageRepo = project.hasProperty("imageRepo") ? project.getProperty("imageRepo") : "snapshot"
+println imageRepo
+def deployBasePath = 'deploy/image/'
+def dockerReposURI="txo-cio-dsw-web-${imageRepo}-docker-local.artifactory.swg-devops.com/sqo/quote-${project.name}-service:${G_VERSION}"
+def dockerFileName= deployBasePath +'Dockerfile'
+def contrastFile =  deployBasePath + 'contrast.jar'
+def dbtrustStore =  deployBasePath + 'SSLTrustStore.jks'
+
+docker {
+    name dockerReposURI
+    dockerfile file(dockerFileName) 
+    files project.libsDir, contrastFile, dbtrustStore
+    buildArgs([PARAM_PACKAGE_NAME: ( project.name + "-" + G_VERSION + ".jar" ),
+               PARAM_APP_NAME: project.name])
+     
+    pull true
+    noCache true
+}
+
+*/

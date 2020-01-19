@@ -1,0 +1,9 @@
+server:
+  servlet:
+    context-path: /point-grabber
+  port: 8888
+
+logging:
+  level:
+    root: info
+

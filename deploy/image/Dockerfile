@@ -1,0 +1,25 @@
+FROM txo-cio-dsw-web-snapshot-docker-local.artifactory.swg-devops.com/sqo/ibmjava:8-sfj
+MAINTAINER "dsw-bp" "dsw-bp"
+
+ARG PARAM_APP_NAME=''
+ARG PARAM_PACKAGE_NAME=*.jar
+ARG PARAM_DB_TRUST_STORE=SSLTrustStore.jks
+ARG PARAM_CONTRAST_JAR=contrast.jar
+ARG PARAM_CONTRAST_CONFIG=''
+ARG PARAM_JVM_OPTION='-Xms512m -Xmx1000m'
+
+ENV APP_NAME ${PARAM_APP_NAME}
+ENV PACKAGE_NAME ${PARAM_PACKAGE_NAME}
+ENV CONTRAST_CONFIG ${PARAM_CONTRAST_CONFIG}
+ENV JVM_OPTION ${PARAM_JVM_OPTION}
+
+RUN mkdir -p /opt/contrast/ && chmod 777 /opt/contrast
+
+COPY ${PARAM_DB_TRUST_STORE} /opt/
+COPY ${PARAM_CONTRAST_JAR} /opt/contrast/
+COPY ${PARAM_PACKAGE_NAME} /root/
+
+WORKDIR /root
+CMD java ${JVM_OPTION} -jar ${CONTRAST_CONFIG} -Dapplication.name=DSW-CLOUD-${APP_NAME} ${PACKAGE_NAME}
+
+EXPOSE 9080
