@@ -58,9 +58,9 @@ public class BaiduService {
 
             browser.findElement(By.id("TANGRAM__PSP_10__footerULoginBtn")).click();
 
-            browser.findElement(By.name("userName")).sendKeys("灵龙zys");
+            browser.findElement(By.name("userName")).sendKeys("你的用户名");
 
-            browser.findElement(By.name("password")).sendKeys("130@baidu.com");
+            browser.findElement(By.name("password")).sendKeys("你的密码");
 
             browser.findElement(By.id("TANGRAM__PSP_10__submit")).click();
 
