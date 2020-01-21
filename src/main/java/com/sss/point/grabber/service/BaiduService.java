@@ -1,41 +1,12 @@
 package com.sss.point.grabber.service;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.net.URI;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 
-import com.sss.point.grabber.manager.TimeManager;
-import org.apache.http.HeaderIterator;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
-import org.apache.http.ParseException;
-import org.apache.http.client.CookieStore;
-import org.apache.http.client.config.CookieSpecs;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.protocol.HttpClientContext;
-import org.apache.http.config.Registry;
-import org.apache.http.config.RegistryBuilder;
-import org.apache.http.cookie.CookieSpecProvider;
-import org.apache.http.impl.client.BasicCookieStore;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClients;
-import org.apache.http.impl.cookie.BasicClientCookie;
-import org.apache.http.impl.cookie.BestMatchSpecFactory;
-import org.apache.http.impl.cookie.BrowserCompatSpecFactory;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
+import com.sss.point.grabber.configuration.TimeConfig;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -56,7 +27,7 @@ public class BaiduService {
     private String driverPath;
 
     @Autowired
-    TimeManager timeManager;
+    TimeConfig timeManager;
 
     ChromeDriver browser = null;
 
@@ -143,6 +114,12 @@ public class BaiduService {
         }
     }
 
+    public void signAllBaidu() throws UnsupportedEncodingException, InterruptedException {
+        login();
+        signInZhidao();
+        signInWenKu();
+        signInTieBa();
+    }
     public void shutdown(){
         if(browser!=null){
             browser.quit();

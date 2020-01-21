@@ -79,4 +79,18 @@ public class DemoApplicationTests {
             baiduService.shutdown();
         }
     }
+
+    //signAllBaidu
+    @Test
+    public void testBaiduSignAllBaidu(){
+        try {
+            baiduService.signAllBaidu();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }finally {
+            baiduService.shutdown();
+        }
+    }
 }

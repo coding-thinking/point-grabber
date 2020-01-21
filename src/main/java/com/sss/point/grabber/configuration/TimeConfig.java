@@ -1,9 +1,10 @@
-package com.sss.point.grabber.manager;
+package com.sss.point.grabber.configuration;
 
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
-@Service
-public class TimeManager {
+@Configuration
+public class TimeConfig {
 
     private int smallBase = 1000;
     private int midBase = 3000;
@@ -25,6 +26,5 @@ public class TimeManager {
     public  int longer() {
         return longerBase + (int) (Math.random() * smallBase);
     }
-
 
 }
