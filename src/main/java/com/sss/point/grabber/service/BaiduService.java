@@ -36,10 +36,17 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BaiduService {
+
+    @Value("${account.baidu.username}")
+    private String username ;
+
+    @Value("${account.baidu.password}")
+    private String password ;
 
     public void login() throws UnsupportedEncodingException {
 
@@ -56,19 +63,24 @@ public class BaiduService {
 
             browser.findElements(By.name("tj_login")).get(1).click();
 
+            Thread.sleep(1400);
             browser.findElement(By.id("TANGRAM__PSP_10__footerULoginBtn")).click();
 
-            browser.findElement(By.name("userName")).sendKeys("你的用户名");
+            Thread.sleep(5200);
+            browser.findElement(By.name("userName")).sendKeys(username);
 
-            browser.findElement(By.name("password")).sendKeys("你的密码");
+            Thread.sleep(5300);
+            browser.findElement(By.name("password")).sendKeys(password);
 
+            Thread.sleep(3500);
             browser.findElement(By.id("TANGRAM__PSP_10__submit")).click();
 
+            Thread.sleep(5500);
         }catch (Throwable e){
             e.printStackTrace();
         }finally {
             if( browser !=null ) {
-                //browser.quit();
+                browser.quit();
             }
         }
 
