@@ -33,4 +33,10 @@
 > localhost:8080/point-grabber/swagger-ui.html
 
 
-### Deploy
+### Feature
+
+MainSite | Subsite | Issue | Owner
+---- | ---- | ---- | ----
+BaiDu | Zhidao, TieBa, Koubei, Wenku | no issue | peakrock
+JD | unknown | unknown | workman
+TX | unknown | unknown | lasttime
