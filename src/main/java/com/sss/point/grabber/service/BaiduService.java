@@ -45,21 +45,22 @@ public class BaiduService {
 
         browser.get(baseUrl);
 
+        Thread.sleep(timeManager.mid());
         browser.findElements(By.name("tj_login")).get(1).click();
 
         Thread.sleep(timeManager.small());
         browser.findElement(By.id("TANGRAM__PSP_10__footerULoginBtn")).click();
 
-        Thread.sleep(timeManager.mid());
+        Thread.sleep(timeManager.high());
         browser.findElement(By.name("userName")).sendKeys(username);
 
         Thread.sleep(timeManager.high());
         browser.findElement(By.name("password")).sendKeys(password);
 
-        Thread.sleep(timeManager.mid());
+        Thread.sleep(timeManager.longer());
         browser.findElement(By.id("TANGRAM__PSP_10__submit")).click();
 
-        Thread.sleep(timeManager.mid());
+        Thread.sleep(timeManager.longer());
 
     }
 
