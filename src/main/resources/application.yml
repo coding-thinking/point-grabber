@@ -11,7 +11,11 @@ account:
   baidu:
     username: ''
     password: ''
+  netease:
+    username: ''
+    password: ''
+
 
 webdriver:
   chrome:
-    path: '/Users/peakrock/my/src/coding-thinking/point-grabber/drivers/chrome-79.0.3945.36/chromedriver'
+    path: 'G:/point-grabber/drivers/win-chrome-79.0.3945.16/chromedriver.exe'

@@ -2,6 +2,7 @@ package com.sss.point.grabber;
 
 
 import com.sss.point.grabber.service.BaiduService;
+import com.sss.point.grabber.service.NetEaseService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,4 +94,5 @@ public class DemoApplicationTests {
             baiduService.shutdown();
         }
     }
+
 }
