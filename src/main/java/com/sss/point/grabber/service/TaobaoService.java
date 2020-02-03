@@ -25,12 +25,9 @@ public class TaobaoService {
 
     ChromeDriver browser = null;
 
+
     @Autowired
     public void init() {
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        browser = new ChromeDriver();
-        browser.manage().timeouts()
-                .implicitlyWait(10, TimeUnit.SECONDS);
     }
 
     public void login() {

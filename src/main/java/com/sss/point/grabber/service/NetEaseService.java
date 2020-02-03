@@ -4,6 +4,7 @@ package com.sss.point.grabber.service;
         import java.util.concurrent.TimeUnit;
 
         import com.sss.point.grabber.configuration.TimeConfig;
+        import com.sss.point.grabber.configuration.WebDriverManager;
         import org.openqa.selenium.By;
         import org.openqa.selenium.chrome.ChromeDriver;
         import org.springframework.beans.factory.annotation.Autowired;
@@ -28,19 +29,11 @@ public class NetEaseService {
     ChromeDriver browser = null;
 
     @Autowired
-    public void init() {
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        browser = new ChromeDriver();
-        browser.manage().timeouts()
-                .implicitlyWait(10, TimeUnit.SECONDS);
+    WebDriverManager webDriverManager ;
 
-        try {
-            loginMusic();
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+    @Autowired
+    public void init() {
+        browser = webDriverManager.getBrowser() ;
     }
 
     public void loginMusic() throws UnsupportedEncodingException, InterruptedException {
@@ -69,12 +62,6 @@ public class NetEaseService {
         loginMusic();
         // signInZhidao();
 
-    }
-    public void shutdown(){
-        if(browser!=null){
-            browser.quit();
-            browser = null ;
-        }
     }
 
 }
