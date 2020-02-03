@@ -1,6 +1,7 @@
 package com.sss.point.grabber;
 
 
+import com.sss.point.grabber.configuration.WebDriverManager;
 import com.sss.point.grabber.service.BaiduService;
 import com.sss.point.grabber.service.NetEaseService;
 import org.junit.Test;
@@ -18,10 +19,11 @@ import java.io.UnsupportedEncodingException;
 @SpringBootTest
 public class DemoApplicationTests {
 
-
     @Autowired
     BaiduService baiduService ;
 
+    @Autowired
+    WebDriverManager webDriverManager ;
     @Test
     public void testBaiduService(){
         try {
@@ -31,7 +33,7 @@ public class DemoApplicationTests {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }finally {
-            baiduService.shutdown();
+            webDriverManager.shutdown();
         }
     }
 
@@ -46,7 +48,7 @@ public class DemoApplicationTests {
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            baiduService.shutdown();
+            webDriverManager.shutdown();
         }
     }
 
@@ -61,7 +63,7 @@ public class DemoApplicationTests {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }finally {
-            baiduService.shutdown();
+            webDriverManager.shutdown();
         }
     }
 
@@ -77,7 +79,7 @@ public class DemoApplicationTests {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }finally {
-            baiduService.shutdown();
+            webDriverManager.shutdown();
         }
     }
 
@@ -91,7 +93,22 @@ public class DemoApplicationTests {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }finally {
-            baiduService.shutdown();
+            webDriverManager.shutdown();
+        }
+    }
+
+    @Autowired
+    NetEaseService netEaseService;
+    @Test
+    public void testNetease(){
+        try {
+            netEaseService.loginMusic();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }finally {
+            webDriverManager.shutdown();
         }
     }
 

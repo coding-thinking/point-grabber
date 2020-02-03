@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import com.sss.point.grabber.configuration.TimeConfig;
+import com.sss.point.grabber.configuration.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -23,19 +24,17 @@ public class BaiduService {
     @Value("${account.baidu.password}")
     private String password;
 
-    @Value("${webdriver.chrome.path}")
-    private String driverPath;
-
     @Autowired
     TimeConfig timeManager;
 
+    @Autowired
+    WebDriverManager webDriverManager ;
+
     ChromeDriver browser = null;
 
-    public void init() {
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        browser = new ChromeDriver();
-        browser.manage().timeouts()
-                .implicitlyWait(10, TimeUnit.SECONDS);
+    @Autowired
+    public void init(){
+        browser = webDriverManager.getBrowser();
     }
 
     public void login() throws UnsupportedEncodingException, InterruptedException {
