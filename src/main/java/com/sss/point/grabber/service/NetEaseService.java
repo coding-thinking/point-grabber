@@ -42,19 +42,31 @@ public class NetEaseService {
 
         browser.get(baseUrl);
 
+        Thread.sleep(timeManager.mid());
+
         browser.findElement(By.cssSelector("a.link.s-fc3")).click();
+
+        Thread.sleep(timeManager.small());
 
         browser.findElement(By.id("j-official-terms")).click();
 
-        browser.findElement(By.cssSelector(".u-mlg2.u-mlg2-wy")).click();
+        Thread.sleep(timeManager.small());
 
-        browser.findElement(By.id("e")).sendKeys(username);
+        browser.findElement(By.cssSelector("a.u-btn2.u-btn2-2")).click();
 
-        browser.findElement(By.id("epw")).sendKeys(password);
+        Thread.sleep(timeManager.small());
 
-        browser.findElement(By.cssSelector(".js-primary.u-btn2.u-btn2-2")).click();
+        browser.findElement(By.id("p")).sendKeys(username);
 
-        browser.findElement(By.cssSelector(".u-btn2.u-btn2-dis")).click();
+        Thread.sleep(timeManager.mid());
+
+        browser.findElement(By.id("pw")).sendKeys(password);
+
+        Thread.sleep(timeManager.small());
+
+        browser.findElement(By.cssSelector("a.j-primary.u-btn2.u-btn2-2")).click();
+
+        Thread.sleep(timeManager.longer());
 
     }
 
