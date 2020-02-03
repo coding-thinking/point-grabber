@@ -31,7 +31,6 @@ public class BaiduService {
 
     ChromeDriver browser = null;
 
-    @Autowired
     public void init() {
         System.setProperty("webdriver.chrome.driver", driverPath);
         browser = new ChromeDriver();
